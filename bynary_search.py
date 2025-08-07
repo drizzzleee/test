@@ -14,3 +14,31 @@ def binary_search(list, item):
 
 my_list = [1, 3, 5, 7, 9]
 print(binary_search(my_list, 9))  # Выведет 1 (индекс числа 3)
+
+from telebot import TeleBot
+from config import TOKEN, state_storage
+from handlers import start, services, citizen_services, org_services, consultation, feedback, prices, info
+
+
+def main():
+    # Инициализация бота
+    bot = TeleBot(TOKEN, state_storage=state_storage)
+
+    # Регистрация всех обработчиков
+    start.register_handlers(bot)
+    services.register_handlers(bot)
+    citizen_services.register_handlers(bot)
+    org_services.register_handlers(bot)
+    consultation.register_handlers(bot)
+    feedback.register_handlers(bot)
+    prices.register_handlers(bot)
+    info.register_handlers(bot)
+
+    # Запуск бота
+    print("Бот запущен...")
+    bot.infinity_polling()
+
+
+if __name__ == "__main__":
+    main()
+

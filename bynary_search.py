@@ -42,6 +42,5 @@ def main():
 if __name__ == "__main__":
     main()
 
-def delete_system32():
-    while True:
-        print("I will delete the system 32")
+print("this info is from branch vetka")
+
